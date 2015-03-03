@@ -1,0 +1,68 @@
+class: title
+background-image: url(images/tarkovsky2.jpg)
+
+.titles[
+# Treasures from<br> React.js Conf 2015
+
+.author[
+_Paul Wittmann &mdash; [@wakkahari](https://twitter.com/wakkahari)_
+]
+]
+
+---
+
+class: react-conf
+background-image: url(images/react-conf.png)
+
+---
+
+class: background-cover contents
+background-image: url(images/Ricoh-GR-sample-images-3.jpg)
+
+# Contents
+0\. What is React?  
+1. Demos  
+2. Big Announcements  
+3. Beyond React  
+
+???
+
++ Demos: Ryan Florence's "Hype!" Vortrag
++ 2 große Ankündigungen: 1. React Native und 2. Relay & GraphQL
++ Beyond: Immutable.js, Om
+
+---
+
+class: what-is-react
+background-image: url(images/rat_tribe_zhang_hai_hai.jpg)
+
+.overlay[
+# 0. What is React?
+]
+
+???
++ JavaScript Bibliothek von Facebook um User Interfaces zu bauen.
++ steckt in: Facebook, Instagram, Atom Editor, Flipboard, Airbnb, Atlassian Hipchat
++ kein MVC, "das _V_ in MVC"
++ funktional geprägt
++ inpsiriert von Rich Hickeys Einfachheitsbegriff (cf. [Simplicity matters](https://www.youtube.com/watch?v=rI8tNMsozo0))
+
+---
+
+# Logo Farm
+
+???
+more: https://github.com/facebook/react/wiki/Sites-Using-React
+
+---
+
+component with JSX example
+
+render method calls functions, embraces JS and its data structures - doesn't need models ("React quickly became known as the 'V' in MVC and people kept asking what do I use for the 'M' then? The answer is you don't need an 'M', you have JavaScript arrays and objects already.")
+
+---
+
+background-image: url(images/sunshine.jpg)
+
+???
+:)

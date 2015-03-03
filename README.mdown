@@ -1,0 +1,7 @@
+Treasures from React.js Conf 2015
+=================================
+
+Built with [Remark.js](https://github.com/gnab/remark) - requires no Grunt, no Gulp, no Bower, no npm, not even a webserver. Just open index.html and you can start the presentation.
+
+### Shortcuts
++ `p` to start presentation mode.
