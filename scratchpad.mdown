@@ -34,4 +34,32 @@ not a framework but part of a fexible toolbox
 framework — A product with the business logic removed, but all of the assumptions left in.
 [Devil’s Dictionary of Programming](http://programmingisterrible.com/post/65781074112/devils-dictionary-of-programming)
 
+---
+
+class: vertical-center vertical-center-large background-blue
+
+.vertical-title[rendering]
+f: data -> UI
+
+???
++ seitdem wir **jQuery Spaghettiland** hinter uns gelassen haben modellieren wir UI-Logik mit **JS Daten** (DOM nicht mehr als Datenspeicher)
+
+---
+
+---
+class: vertical-center vertical-center-large
+
+rendering so far
+
+???
+jQuery: imperatives Spaghettifest mit dem DOM
+Backbone: Templates, aber imperativer Code, der granulare nachträgliche Änderungen vornimmt
+React: deklarativ, render-Funktion beschreibt wie die UI zu allen Zeiten auszusehen hat - was sie dank ständigem Neurendern auch tut.
+
+---
+
+JavaScript data -> DOM
+
+prismatic example from Ian Davis
+
 

@@ -382,16 +382,31 @@ background-image: url(images/davis-prismatic-example-01-before-cropped.png)
 
 background-image: url(images/davis-prismatic-example-02-after-cropped.png)
 
+???
+Probleme:
++ **synchron halten** = aufwändig
++ **performant**?
+
+# -> Performance Beispiel
+
 ---
 
+background-image: url(images/monkeys-slow.gif)
+
+---
 
 class: vertical-center vertical-center-large background-blue
 
-.vertical-title[rendering]
-f: data -> UI
+.vertical-title[React's solution]
+
+rerender everything
 
 ???
-+ seitdem wir **jQuery Spaghettiland** hinter uns gelassen haben modellieren wir UI-Logik mit **JS Daten** (DOM nicht mehr als Datenspeicher)
++ wenn **setState** aufgerufen wird
++ **simpelste Lösung**
++ **nie im Leben performant**
++ erlaubt deklaratives Bauen von UI aus JavaScript Daten
++ React Entwickler modifizieren nicht direkt den DOM.
 
 ---
 
@@ -401,25 +416,11 @@ background-image: url(images/doom3-react.png)
 
 ---
 
-jQuery: imperatives Spaghettifest mit dem DOM
-Backbone: Templates, aber imperativer Code, der granulare nachträgliche Änderungen vornimmt
-React: deklarativ, render-Funktion beschreibt wie die UI zu allen Zeiten auszusehen hat - was sie dank ständigem Neurendern auch tut.
++ precise DOM updates
++ DOM abstracted away
 
 ---
 
-JavaScript data -> DOM
-
-prismatic example from Ian Davis
-
----
-
-Problems:
-
-+ how to keep everything in synch?
-+ how to keep things performant?
-  -> precise DOM updates
-
----
 class: vertical-center rerender-everything
 
 when you call `setState`,  
