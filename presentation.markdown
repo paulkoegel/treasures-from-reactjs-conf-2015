@@ -24,10 +24,8 @@ background-image: url(images/Ricoh-GR-sample-images-3.jpg)
 ???
 ### Stand von **User Interfaces** mit JavaScript
 + User Interfaces sind schwer: frameworks **sprießen aus dem Boden**
-+ HTML wasn't built for web apps
-+ ob React bleibt wird die Zeit sagen
-+ lange nicht mehr so begeistert von neuen Ideen
-+ andere Frameworks bauen gerade fleißig React nach
++ HTML wurde nicht für **Webapps** gebaut
++ React bringt gehörig **frischen Wind** rein; andere Frameworks bauen gerade fleißig React nach
 
 ---
 
@@ -59,7 +57,7 @@ class: muffin
 background-image: url(images/muffin.png)
 
 ???
-+ **Umriss**
++ **Umrisse skizzieren**
 
 ---
 
@@ -72,6 +70,7 @@ class: colour-stripes
 + Auffrischerkurs in **Farblehre**
 + **Ideen** hinter React
 + Kern den ich **vermitteln** will
++ Ideen werden uns länger beschäftigen, bin froh wenn ihr **virtual-dom** benutzt
 
 ---
 
@@ -79,7 +78,7 @@ class: muffin
 background-image: url(images/muffin-only-green-and-blue.png)
 
 ???
-+ ein paar Schokostückchen der React Conf rauspicken
++ zwei Smarties der React Conf rauspicken: Relay und React Native
 
 # -> zunächst aber zum Umriss
 
@@ -94,10 +93,13 @@ class: vertical-center vertical-center-large
 JavaScript _library_ for<br> building **user interfaces**
 
 ???
+### Geschichte
 + Mitte 2013, Facebook
-+ skeptische Reaktionen - selbst erst durch Om überzeugt.
++ erste Reaktionen skeptisch - selbst erst durch Om & Pete Hunt überzeugt.
++ Facebook, Instagram, Atom editor, Airbnb, Hipchat
 
 <br>
+### Library
 + **Erwartungshaltung**: kein **Framework**
 + the "V" in MVC - kein MVC, aber mehr als nur "V", da andere Ideen
 + **Virtual DOM** -> great performance; und das war's - es geht um mehr.
@@ -115,6 +117,9 @@ class: vertical-center vertical-center-left
 + don't learn a **framework's language**
 + **flexible tool** to model business logic in the language of the problem domain
 
+???
+da React eine Bibliothek ist...
+
 ---
 
 class: vertical-center vertical-center-large
@@ -128,7 +133,7 @@ makes us think and<br>
 + React ist uns erstmal **fremd** - Alien Technology; JSX, templates und view in gleicher Datei
 + Wir sind immer noch dabei zu entdecken was dank React alles möglich ist.
 + Input und **Erweiterungen** der **Clojure community**.
-# -> nun zur Farblehre
+# -> das war der Umriss, nun zur Farblehre
 
 ---
 
@@ -142,9 +147,9 @@ class: vertical-center vertical-center-medium vertical-center-left
 .blue[don't care about **rendering**]
 
 ???
-**zwei zentrale Aspekte** von React anschauen
-**nachvollziehen** was der Code macht
-**jQuery Spaghetti**: alles feuert auf den DOM
++ **zwei zentrale Aspekte** von React anschauen
++ leicht **nachvollziehen** was der Code macht; bugs schnell fixen; kurze warmup zeit
++ rendering macht Kopfschmerzen, extrem: **jQuery Spaghetti**: alles feuert auf den DOM
 
 ---
 
@@ -161,9 +166,6 @@ class: vertical-center vertical-center-medium vertical-center-left
 .small[don't care about rendering]
 DOM is **abstracted away**]
 ]
-
-???
-rendering: rerender everything, virtual DOM as an implementation detail to make this possible
 
 ---
 
@@ -182,7 +184,8 @@ class: vertical-center vertical-center-medium vertical-center-left
 ]
 
 ???
-rendering: rerender everything, virtual DOM as an implementation detail to make this possible
+**Components**: Bausteine von React
+**Virtueller DOM**: Abstraktionsschicht zwischen Components und dem DOM, die DOM-Updates managt
 
 ---
 
@@ -217,24 +220,35 @@ React.render(<ButtonCounter />,
 ```
 
 ???
-+ **Atomare Einheit** einer React-Anwendung
+# -> zurück auf die Ideenebene, Motivation für Components
 
 ---
 
-class: vertical-center vertical-center-large
+class: vertical-center vertical-center-large background-green
 
 .vertical-title[Pete Hunt]
 
 data changing over time is the **root of all evil**
 
 ???
-+ schwierig nachzuvollziehen - erst recht wenn es mehrere Beteiligte gibt
-+ state einer Facebook **Kontaktliste** nach Änderungen
-# -> in React gibt es deshalb...
+### Motivation für Components
+2 Aspekte
+1. schwer nachzuvollziehen wenn Daten die **durch mehrere Funktionen** durchgehen.
+2. Bsp.: Bugs, die nur bei bestimmten **Klickpfaden** auftreten nachvollziehen (DOM nicht aktualisiert)
 
 ---
 
-class: vertical-center vertical-center-large
+class: background-stretch-vertical mutable-state-is-bad
+background-image: url(images/davis-mutable-state-is-bad.png)
+
+???
++ simpelstes Beispiel
++ -> Problem liegt noch tiefer: veränderliche Datenstrukturen haben (-> **Immutable.js**)
+# -> Reacts Lösung:
+
+---
+
+class: vertical-center vertical-center-large background-green
 
 _state_ -vs- _props_
 
@@ -270,64 +284,69 @@ React.render(<ButtonCounter />,
              document.getElementById('example'));
 ```
 
+???
+state kennen wir schon.
+
+# direkt weiter machen
+
 ---
+
+class: background-green
 
 # Props
 
 .large-code[
 ```html
-<FriendListItem>
-  <FriendListInfo name="Darth Vader"
-    mutual_friends_count=100 />
-</FriendListItem>
+<FriendListInfo name="Darth Vader"
+       mutual_friends_count=100 />
 ```
 ]
 
+???
+von außen gesetzte Attribute
+
 ---
 
-class: vertical-center vertical-center-large
+class: vertical-center vertical-center-large background-green
 
 _state_ -vs- _props_
 
 ???
 ### Unterscheidung
-+ **state** ist veränderbar, aber wir nur von dieser Komponente verändert
-+ **props** sind unveränderbar
++ **state** ist veränderbar, aber wird nur von dieser Komponente verändert
++ **props** sind _für diese Komponente_ unveränderbar
++ zähmt das **Mutable State Monster**
 + macht Code viel besser nachvollziehbar wenn ich weiß dass etwas nicht verändert werden kann
 
 ---
 
-class: background-stretch-vertical mutable-state-is-bad
-background-image: url(images/davis-mutable-state-is-bad.png)
+class: vertical-center vertical-center-large background-green
 
----
-
-class: vertical-center vertical-center-large
-
-unidirectional data flow
+_unidirectional_ data flow
 
 ???
 immer von Parent zu Child.
 
 ---
 
-class: vertical-center vertical-center-large
+class: vertical-center vertical-center-large background-green
 
 .vertical-title[when data needs to travel upstream]
 Flux
 
 ???
 + child -> parent (z.b. Toggler) oder inputs
-+ kein **Flux** heute, aber dafür ein verwandtes Problem
++ kein **Flux** heute, was neueres
 
 ---
-class: vertical-center vertical-center-large
+
+class: vertical-center vertical-center-large background-green
 
 How do components get the **data** they need?
 
 ---
 
-class: vertical-center vertical-center-large
+class: vertical-center vertical-center-large background-green
 
 .vertical-title[alien territory ahead]
 
@@ -342,41 +361,103 @@ class: vertical-center vertical-center-large
 background-image: url(images/components-example.png)
 
 ???
-**Composable**: ich kann Components ineinander schachteln
++ **verschachtelt**
++ **Daten**:
+  - Array von Freunden
+  - Avatar, Freundschaftsstatus
+  - Name, # gemeinsame Freunde
 
 ---
 
 background-image: url(images/relay-01.png)
 
+???
+auf **Server** muss das gleiche Wissen stecken damit wir nicht zu viele API Requests machen müssen
+
 ---
 
 background-image: url(images/relay-02.png)
 
----
-
-background-image: url(images/relay-03.png)
+???
+bei Änderungen: überall anpassen :(
 
 ---
 
 background-image: url(images/relay-04.png)
 
+???
++ Components und API-Daten dazu
+
 ---
 
 background-image: url(images/relay-05.png)
+
+???
+lassen wir die Values weg haben wir unsere **Datenanforderungen** :)
 
 ---
 
 background-image: url(images/relay-06.png)
 
+???
+das ist **GraphQL**
+hat **serverseitige** Komponente
+
+---
+
+class: vertical-center vertical-center-large background-green
+
+**Relay**
+
+???
++ GraphQL in React
++ Komponenten spezifizieren ihre Datenanforderungen
++ Eltern verweisen auf die Anforderungen ihrer Kinder
++ Rootkomponente aggregiert alle Anforderungen und schickt GraphQL Anfrage an Server
+
+---
+
+background-image: url(images/relay-example.png)
+
+???
+
+# -> ENDE DER GRÜNEN PERIODE
+
+---
+
+class: vertical-center vertical-center-medium vertical-center-left
+
+.vertical-title[implementation]
+
+.wrapper[
+.green[
+.small[easy to reason about > separation of concerns]
+**components**]
+<br>
+.blue[
+.small[don't care about rendering > DOM is abstracted away]
+**Virtual DOM**]
+]
+
+???
+**Components**: Bausteine von React
+**Virtueller DOM**: Abstraktionsschicht zwischen Components und dem DOM, die DOM-Updates managt
+
 ---
 
 class: vertical-center vertical-center-large background-blue
 
-Rendering
+**Rendering**
+
+???
+Blaue Periode
 
 ---
 
 background-image: url(images/davis-prismatic-example-01-before-cropped.png)
+
+???
+wenn ich Urban Exploration **followe** passiert...
 
 ---
 
@@ -385,7 +466,7 @@ background-image: url(images/davis-prismatic-example-02-after-cropped.png)
 ???
 Probleme:
 + **synchron halten** = aufwändig
-+ **performant**?
++ mehrere DOM-Updates oft nicht **performant**
 
 # -> Performance Beispiel
 
@@ -393,20 +474,21 @@ Probleme:
 
 background-image: url(images/monkeys-slow.gif)
 
+???
++ textbox mit mathematischen Formeln
+
 ---
 
 class: vertical-center vertical-center-large background-blue
 
 .vertical-title[React's solution]
 
-rerender everything
+rerender _everything_
 
 ???
 + wenn **setState** aufgerufen wird
 + **simpelste Lösung**
 + **nie im Leben performant**
-+ erlaubt deklaratives Bauen von UI aus JavaScript Daten
-+ React Entwickler modifizieren nicht direkt den DOM.
 
 ---
 
@@ -414,204 +496,88 @@ class: background-black
 
 background-image: url(images/doom3-react.png)
 
+???
++ schwarz-weiß: Doom 3 Rendering Engine
++ Blau-weiß: React-Entsprechungen
++ VDOM = **JS objekt**
++ **minimale Änderungen** gehen an echten DOM
+
 ---
+
+class: vertical-center vertical-center-medium vertical-center background-blue
 
 + precise DOM updates
 + DOM abstracted away
 
----
-
-class: vertical-center rerender-everything
-
-when you call `setState`,  
-_everything_ gets rerendered
-
----
-class: vertical-center vertical-center-large
-
-How can that ever work?
+???
++ erlaubt deklaratives Bauen von UI aus JavaScript Daten
++ React Entwickler modifizieren nicht direkt den DOM.
 
 ---
 
-React completely abstracts away the DOM
+class: vertical-center background-blue
+
+.vertical-title[better performance through simplicity]
+
+"making an entire family of common and tedious **hand optimization** techniques **obsolete**"
 
 ???
-"we never interact with the DOM itself, we just interact with React components and they propagate all the necessary changes for us" (Ian Davis)
+David Nolen. "The Future of JavaScript MVC Frameworks"
 
 ---
 
-data -> render function -> virtual DOM elements
+class: vertical-center vertical-center-large background-blue
 
----
-
-class: code-fullscreen component-example
-
-```html
-<script src='react.js'></script>
-<script src='JSXTransformer.js'></script>
-
-<div id='example'></div>
-
-<script type='text/jsx'>
-  var ButtonCounter = React.createClass({
-    getInitialState: function() {
-      return { count: 0 };
-    },
-
-    addOne: function() {
-      this.setState({ count: this.state.count + 1 });
-    },
-
-    render: function() {
-      return <div>
-          <div>{ this.state.count }</div>
-          <button onClick={ this.addOne }> +1 </button>
-        </div>
-    }
-  });
-
-React.render(<ButtonCounter />,
-             document.getElementById('example'));
-```
-
----
-
-class: vertical-center
-React is all about components
-
-???
-no models, no controllers, templates are part of the components, in the future CSS will live there as well.
-"Rethinking best prectices."
-
----
-
-JSX
-
-???
-use the power of JavaScript - no need for a DSL templating language
-quite the opposite of logicless templating :)
-
-className: b/c that's what it's called in the DOM specification - https://developer.mozilla.org/en-US/docs/Web/API/Element/className
-htmlFor: same reason, https://developer.mozilla.org/en/docs/Web/API/HTMLLabelElement
-
----
-
-Rendering
-- Performance
-- server-side rendering via node (Angular haben's aufgegeben)
-- Einfachheit - ich muss weniger nachdenken wenn immer alles neu gerendert wird - weniger DOM state - keinen den ich manage
-- früher: es gab klickpfade bei denen bestimmte sachen kaputt gingen - extrem schwer zu verwaltender view state - lese eine nachricht, eine neue kommt rein, dann klicke ich auf xxx und dann geht auf einmal yyy nicht mehr.
-
-- nutzen JS wo's nur geht - [].map, inline styles etc.
-- schneller einstieg, leicht granular einzubauen - kein riesen setup. schnell erste ergebnisse, fühlt sich gut an.
-
-früher: jQuery - wieviele elemente der klasse .foo gibt es um zu wissen wieviele fotos im galerieslider sind
-dann backbone - wie update ich nur den namen im DOM wenn ich nur ein event habe, dass der user sich geändert hat?
-
-Template: so wie in vielen anderen JS Frameworks auch.
-Problem: früher haben wir den DOM als Datenspeicher missbraucht - Datenattribute, Galleriekarussell bei dem wir den DOM mit `$('.galleryImage').length` abfragen wieviele Bilder gerade da sind.
-Dann kam Backbone - Models als "single source of truth".
-Problem weiterhin: wenn sich ein Teil des Models ändert wird alles komplett neu gerendert das auf Änderungen des Models hört
--> viel Code geschrieben um das zu umgehen / performanter zu machen.
-Computer können das besser, wir sollten uns wegen sowas nicht den Kopf zerbrechen müssen - wird sehr schnell chaotisch und unbeherrschbar.
-
-einfachste Lösung:
-- bei Änderung am Model alles neu rendern, um alle Stellen im DOM zu aktualisieren
-- ähnlich wie wenn Seiten auf dem Server gerendert werden
-- bisher nicht sehr performant, ABER:
-... virtueller DOM (nicht Shadow DOM)
-
-muss mir als entwickler keine gedanken darum machen.
-
-auch in react: ein model an mehrere views binden spannt viele stricke -> stores in flux / globalere date (Om)
-
-JSX template mit state
-
-präzisere updates
-ich muss mich nicht drum kümmern
-
-React:
-- Rendering und Datenstrukturen sind Implementierungsdetails
-  saubere, flexible Plattform auf die es aufzubauen lohnt
-- geht mehr darum die Ideen zu vermitteln - wenn ihr alle morgen anfangt React zu nutzen bin ich sehr froh, aber wenn ihr immutable.js oder [virtual-dom](https://github.com/Matt-Esch/virtual-dom) in euren Projekten einsetzt bin ich auch froh :)
-
----
-
+.wrapper[
 # React Native
+
+build **native apps** with React
+]
 
 ???
 Virtual DOM - doesn't matter where you're actually rendering - can easily be exchanged
 
 ---
 
-The biggest benefit of React Native isn't JavaScript. It’s React.
+class: vertical-center background-blue
 
+.wrapper[
++ JS runtime --**asynchronously**-> native thread
++ "**learn once**, write anywhere"
++ web development experience 
+]
+
+???
+1. write JS & React, runs on a **JS runtime** renders to **native views**
+2. **the platforms are different** - not the same code but the same stack - **the platforms are different**
+3. no compilation step
+
+---
+
+class: large-code background-blue
+
+```html
+<View>
+  <Text numberOfLines={2}>
+    {this.props.movie.title}
+  </Text>
+</View>
+```
+
+???
++ instead of **div** and **span**
++ native views are simply **different**
++ write once run anywhere is a **pipe dream**
+
+---
+
+class: vertical-center vertical-center-large background-blue
+
+The biggest benefit of React Native isn't JavaScript. It's **React**.
+
+???
+React's architecture.
 [http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about](http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about)
-
----
-
-# GraphQL & Relay
-
----
-
-class: background-cover contents
-background-image: url(images/Ricoh-GR-sample-images-3.jpg)
-
-# Contents
-0\. What is React?  
-1. Demos  
-2. Big Announcements  
-3. Beyond React  
-
-???
-
-+ Demos: Ryan Florence's "Hype!" Vortrag
-+ 2 große Ankündigungen: 1. React Native und 2. Relay & GraphQL
-+ Beyond: Immutable.js, Om
-
----
-
-???
-+ JavaScript Bibliothek von Facebook um User Interfaces zu bauen.
-+ steckt in: Facebook, Instagram, Atom Editor, Flipboard, Airbnb, Atlassian Hipchat
-+ kein MVC, "das _V_ in MVC"
-+ funktional geprägt
-+ inpsiriert von Rich Hickeys Einfachheitsbegriff (cf. [Simplicity matters](https://www.youtube.com/watch?v=rI8tNMsozo0))
-
----
-
-class: vertical-center
-JavaScript _library_ for building UIs
-
----
-
-component with JSX example
-
-render method calls functions, embraces JS and its data structures - doesn't need models ("React quickly became known as the 'V' in MVC and people kept asking what do I use for the 'M' then? The answer is you don't need an 'M', you have JavaScript arrays and objects already.")
-
----
-
-# React Summary
-
-+ components
-+ virtual DOM
-+ simplicity
-
-???
-Einfachheit:
-+ JS nutzen wo's nur geht - keine Turing-vollständige Templatingsprache, JSX ist eine dünne Schichte über reinen JS-Funktionen, JS um CSS zu schreiben.
-+ JS Datenstrukturen für Models nutzen
-+ Performanz ist nur eine Folge der Einfachheit, kein Ziel - man kann alles schnell kriegen und es gibt Lösungen die schneller als React sind.
-+ mentalen Tribut gering halten, einfach über Code nachdenken, Bugs schnell fixbar machen
-
----
-
-class: vertical-center
-
-React Native
-
-???
-native apps with React
 
 ---
 
@@ -633,9 +599,14 @@ Summary
 .railslove-heart[![heart](images/railslove-heart.svg)]
 ]
 
+???
++ React's component architecture macht es leicht nachzuvollziehen was der Code macht
++ Zukunft: Relay, Flux, ClojureScript
++ **Virtual DOM**: kopiert, **standalone**
+
 ---
 
-class: vertical-center
+class: vertical-center background-blue
 
 .wrapper[
 # React Europe
@@ -659,6 +630,5 @@ Questions
 + [React’s diff algorithm](http://calendar.perfplanet.com/2013/diff)
 + [Coming to React from Angular](http://www.stridenyc.com/blog/2015/3/4/coming-to-react-from-angular)
 + [Hotloader](https://www.youtube.com/watch?v=pw4fKkyPPg8)
-
 + [React & Om](https://paulwittmann.github.io/cgnjs-om)
 + [My Way into Clojure: Building a Card Game with Om](http://www.railslove.com/stories/my-way-into-clojure-building-a-card-game-with-om-part-1)

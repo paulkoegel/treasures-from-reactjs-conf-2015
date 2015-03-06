@@ -62,4 +62,103 @@ JavaScript data -> DOM
 
 prismatic example from Ian Davis
 
+---
+
+---
+
+class: vertical-center
+JavaScript _library_ for building UIs
+
+---
+
+component with JSX example
+
+render method calls functions, embraces JS and its data structures - doesn't need models ("React quickly became known as the 'V' in MVC and people kept asking what do I use for the 'M' then? The answer is you don't need an 'M', you have JavaScript arrays and objects already.")
+
+---
+
+class: background-cover contents
+background-image: url(images/Ricoh-GR-sample-images-3.jpg)
+
+# Contents
+0\. What is React?  
+1. Demos  
+2. Big Announcements  
+3. Beyond React  
+
+???
+
++ Demos: Ryan Florence's "Hype!" Vortrag
++ 2 große Ankündigungen: 1. React Native und 2. Relay & GraphQL
++ Beyond: Immutable.js, Om
+
+---
+
+---
+
+JSX
+
+???
+use the power of JavaScript - no need for a DSL templating language
+quite the opposite of logicless templating :)
+
+className: b/c that's what it's called in the DOM specification - https://developer.mozilla.org/en-US/docs/Web/API/Element/className
+htmlFor: same reason, https://developer.mozilla.org/en/docs/Web/API/HTMLLabelElement
+
+---
+
+Rendering
+- Performance
+- server-side rendering via node (Angular haben's aufgegeben)
+- Einfachheit - ich muss weniger nachdenken wenn immer alles neu gerendert wird - weniger DOM state - keinen den ich manage
+- früher: es gab klickpfade bei denen bestimmte sachen kaputt gingen - extrem schwer zu verwaltender view state - lese eine nachricht, eine neue kommt rein, dann klicke ich auf xxx und dann geht auf einmal yyy nicht mehr.
+
+- nutzen JS wo's nur geht - [].map, inline styles etc.
+- schneller einstieg, leicht granular einzubauen - kein riesen setup. schnell erste ergebnisse, fühlt sich gut an.
+
+früher: jQuery - wieviele elemente der klasse .foo gibt es um zu wissen wieviele fotos im galerieslider sind
+dann backbone - wie update ich nur den namen im DOM wenn ich nur ein event habe, dass der user sich geändert hat?
+
+Template: so wie in vielen anderen JS Frameworks auch.
+Problem: früher haben wir den DOM als Datenspeicher missbraucht - Datenattribute, Galleriekarussell bei dem wir den DOM mit `$('.galleryImage').length` abfragen wieviele Bilder gerade da sind.
+Dann kam Backbone - Models als "single source of truth".
+Problem weiterhin: wenn sich ein Teil des Models ändert wird alles komplett neu gerendert das auf Änderungen des Models hört
+-> viel Code geschrieben um das zu umgehen / performanter zu machen.
+Computer können das besser, wir sollten uns wegen sowas nicht den Kopf zerbrechen müssen - wird sehr schnell chaotisch und unbeherrschbar.
+
+einfachste Lösung:
+- bei Änderung am Model alles neu rendern, um alle Stellen im DOM zu aktualisieren
+- ähnlich wie wenn Seiten auf dem Server gerendert werden
+- bisher nicht sehr performant, ABER:
+... virtueller DOM (nicht Shadow DOM)
+
+muss mir als entwickler keine gedanken darum machen.
+
+auch in react: ein model an mehrere views binden spannt viele stricke -> stores in flux / globalere date (Om)
+
+JSX template mit state
+
+präzisere updates
+ich muss mich nicht drum kümmern
+
+React:
+- Rendering und Datenstrukturen sind Implementierungsdetails
+  saubere, flexible Plattform auf die es aufzubauen lohnt
+- geht mehr darum die Ideen zu vermitteln - wenn ihr alle morgen anfangt React zu nutzen bin ich sehr froh, aber wenn ihr immutable.js oder [virtual-dom](https://github.com/Matt-Esch/virtual-dom) in euren Projekten einsetzt bin ich auch froh :)
+
+???
++ JavaScript Bibliothek von Facebook um User Interfaces zu bauen.
++ steckt in: Facebook, Instagram, Atom Editor, Flipboard, Airbnb, Atlassian Hipchat
++ kein MVC, "das _V_ in MVC"
++ funktional geprägt
++ inpsiriert von Rich Hickeys Einfachheitsbegriff (cf. [Simplicity matters](https://www.youtube.com/watch?v=rI8tNMsozo0))
+
+class: vertical-center vertical-center-large background-blue
+
+.vertical-title[rendering]
+
+data -> rendering function -> virtual DOM -> DOM
+
+---
+
 

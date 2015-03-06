@@ -243,11 +243,33 @@ a, a:visited {
   background-color: black;
 }
 
+.background-green {
+  background-color: #25991F;
+  color: #fff;
+}
+
+.background-green a {
+  color: #fff;
+}
+
+.background-green .vertical-title {
+  color: #ccc;
+}
+
 .background-blue {
   background-color: #284EC8;
   color: white;
 }
 
+.background-blue a {
+  color: #fff;
+}
+
 .background-blue .vertical-title {
   color: #ccc;
 }
+
+.vertical-center-medium ul, .vertical-center ul {
+  width: 100%;
+}
+
