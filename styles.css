@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 /* GENERIC */
 
 body {
@@ -49,13 +53,18 @@ ul li, ol li {
 }
 
 .vertical-center {
-  text-align: center;
   font-size: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   top: 0;
   bottom: 0;
+  width: 100%;
+}
+
+.vertical-center-large {
+  font-size: 85px;
 }
 
 .vertical-center a, .vertical-center a:visited {
@@ -69,6 +78,10 @@ ul li, ol li {
 
 a, a:visited {
   color: #00CB7A;
+}
+
+.medium {
+  font-size: 80px;
 }
 
 .large {
@@ -90,7 +103,6 @@ a, a:visited {
 }
 
 .title a, .title a:visited {
-  color: #aaa;
   text-decoration: none;
 }
 
@@ -114,7 +126,8 @@ a, a:visited {
   margin-bottom: 20px;
 }
 
-.author {
+.author, .author a {
+  color: #aaa;
   font-size: 25px;
   font-style: italic;
 }
@@ -150,4 +163,14 @@ a, a:visited {
 .no-vertical-padding {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.rerender-everything {
+  font-size: 64px;
+}
+
+.muffin {
+  background-size: auto 80% !important;
+  background-position: center !important;
+  background-color: #ddd;
 }

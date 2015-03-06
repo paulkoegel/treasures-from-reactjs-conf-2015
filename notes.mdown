@@ -1,0 +1,96 @@
+Data fetching for React aplication at Facebook - Dan Schafer & Jing Chen - React Conf 2015
+
+Flux: design pattern
+
+each component has distrinct data fetching needs:
+FriendList: # of friends
+FriendListItem: profile picture
+FriendInfo: name & mutual friend count
+
+
+we've encoded the implementation details of all three components on the server side so it knows what to pass down.
+details of FriendInfo are leaked to FriendListItem as well because it has to know what it has to pass down as props. What happens when we change FriendInfo?
+We certainly have to change FriendListItem and the server :( (yellow bubbles up and replaces green in the diagram)
+
+specification of data needs doesn't live inside the component but is spread all over the application
+
+solution:
+
+each component specifies what data it needs and sends is requirements up the tree. at the top of the tree all data requirements are collected and sent to the server. the server doesn't know about data requirements or our implementation details and creates responses tailored to specific data needs.
+
+server doesn't know anymore what data FriendInfo requires - that knowledge doesn't belong there - and put this knowledge inside FriendInfo.
+rendering logic for FriendInfo and its data specifications are tied together - we can't change one without changing the other
+
+composable data requirements
+
+our data specification language:
++ has to be able to represent complex objects (think JSON with nested arrays and objects), table data like in SQL doesn't cut it
++ has to compose, we have to be able to take a component's data specifications and pass them up to its parent - FriendListItem must be able to build data requirements for itself and all its children - and so on until the root asks the server for all the data
+
+example with data requirements for FriendListItem
+remove values
+
+-> this is GraphQL
+
+they've used it at Facebook for almost 2 1/2 years
+
+additional concept of a call - has a name (in our case node) and it takes an argument - my user id
+
+1 to n relationships via calls: friends.first(1) { ...friend's details }
+cursor: allows us to efficiently paginate -> can use the cursor afterwards to fetch friends after this cursor.
+
+--
+JING:
+
+GraphQL allows us to specify the response shape
+GraphQL inside React allows us to colocate queries with rendering logic.
+
+data requirements are composable: FriendListItem simply says it needs all the data that its child components FriendListInfo and ProfilePic need. The root component flattens the requirements (if several components ask for the same fields we don't ask for them twice) before sending them to the server.
+
+The server then responds with data that has the exact same shape as what we asked for.
+
+15:40 - Flux stuff follows...
+
+Relay: "a React application framework that is the next evolution of Flux"
+rather than having components pass data down to their children components simply specify what data they need and an have it automatically satisfied by Relay
+
+witout relay: have to edit code in a lot of places / keep several layers in sync when data requirements change - see screenshot with marked Atom tabs.
+Lots of juggling, which is error-prone, and constant danger of over-/underfetching of data.
+before Relay:
+underfetching: change FriendListItem without changing what data a parent fetches -> FriendListItem ends up without the data it needs in that specific case :(
+overfetching: how can i know i don't need data from the server anymore? have to go through all components to see whether some attribute is still requried - it's safer to just leave it in - accumulates cruft.
+
+Relay: add new data requirement "is_verified" for FriendListItem in FriendListItem's statics.queries field and you're DONE :) no more under- or overfetching - yeehaw!
+
+example: pagination
+
+---
+
+There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies. The first method is far more difficult.
+Tony Hoare. "1980 Turing Award Lecture". _Communications of the ACM 24 (2)_. February 1981. 75-83.
+
+ClojureScript prevents us from using the bad parts of JavaScript
+example: variable hoisting.
+
+---
+
+Shared mutable state is the root of all evil
+
+example: tie messages collection to a View that only shows the number of unread messages; have to pass in the entire collection for data binding to work; entire collection and all of its members is mutable in the View - hard to reason about when you have an app built like that - where did my collection get mutated?
+
+---
+DOM:
+large, globally accessible mutable object that everything just pounds on at once.
+no one would use that to build something as complex as a web app
+
+Ian Davis
+
+---
+
+
+OLD SLIDES
+
+---
+class: react-conf
+background-image: url(images/react-conf.png)
+---

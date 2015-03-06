@@ -5,22 +5,59 @@ background-image: url(images/tarkovsky3.jpg)
 # Treasures from<br>React.js Conf 2015
 
 .author[
-  Paul Wittmann &mdash; [@wakkahari](https://twitter.com/wakkahari)
+  Paul Wittmann &mdash; [@wakkahari](https://twitter.com/wakkahari) &mdash; <paul@railslove.com>
 ]]
 
 ???
 Railslove
 JavaScript, Ruby, Clojure
 
----
-
-class: react-conf
-background-image: url(images/react-conf.png)
-
-???
 + 28./29. Januar in SF
 + Neugier wecken und neue Ideen vorstellen
 + Überblick über neuste Entwicklungen, zeigen warum React gerade so Wellen schlägt
+
+---
+
+class: muffin
+background-image: url(images/muffin.png)
+
+???
+wenn React ein Muffin wäre
+1. Teil: Umriss skizzieren
+
+---
+
+class: muffin
+background-image: url(images/muffin-with-bits.png)
+
+???
+2. Teil: ein paar Schokostückchen rauspicken
++ zunächst zum Umriss
+
+---
+
+class: what-is-react
+background-image: url(images/rat_tribe_zhang_hai_hai.jpg)
+
+.overlay[
+# What is React?
+]
+
+???
+
+---
+
+class: vertical-center vertical-center-large
+
+Virtual DOM => good performance
+
+---
+
+# Themes
+
++ cohesion - colocate markup and component logic; and CSS, and data requirements.
+
+
 
 ---
 
@@ -39,21 +76,34 @@ background-image: url(images/react-conf.png)
 --
 
 + rendering is an implementation detail
+--
+
++ plays nicely with your stack
+
 
 ???
+React ist vielmehr:
 React begeistert mich weil man ihm/ihr anmerkt, dass sie nach Einfachheit strebt und dabei neue Wege aufzeigt wie man UIs bauen kann - hat _alle_ anderen JS Lösungen beeinflusst.
 + gibt uns zu denken - fordert uns heraus - wir entdecken immer noch erst die Möglichkeiten die uns durch seine Ideen eröffnet werden
 + nimmt JS begeistert an und nutzt es wo's nur geht
 + was passiert (Verhalten/Programmfluss) ist leicht nachzuvollziehen / macht was man erwartet
 + modular, LEGO, nicht verknotet (-> einfach), unidirektionaler Datenfluss: Kindkomponenten erhalten Daten von Eltern aber nicht umgekehrt
 + virtueller DOM: DOM wird für mich wegabstrahiert
++ leicht in bestehende Projekte einzubinden, da man nicht die ganze Frontendarchitektur umstellen muss sondern gezielt nur einen Teil mit React bauen kann
 
 ---
 
-# Contents
+data -> UI
 
-1. Introduction to React
-2. Treasure Time
+--
+
+f: data -> UI
+
+---
+
+jQuery: imperatives Spaghettifest mit dem DOM
+Backbone: Templates, aber imperativer Code, der granulare nachträgliche Änderungen vornimmt
+React: deklarativ, render-Funktion beschreibt wie die UI zu allen Zeiten auszusehen hat - was sie dank ständigem Neurendern auch tut.
 
 ---
 
@@ -67,10 +117,9 @@ User Interfaces sind schwer
 JS frameworks sprießen aus dem Boden Blogpost
 
 ---
+class: vertical-center vertical-center-large
 
-.vertical-center[
-HTML wasn't built for web apps
-]
+HTML wasn't built for web apps.
 
 ---
 
@@ -100,6 +149,17 @@ Problems:
 + how to keep everything in synch?
 + how to keep things performant?
   -> precise DOM updates
+
+---
+class: vertical-center rerender-everything
+
+when you call `setState`,  
+_everything_ gets rerendered
+
+---
+class: vertical-center vertical-center-large
+
+How can that ever work?
 
 ---
 
@@ -146,9 +206,8 @@ React.render(<ButtonCounter />,
 
 ---
 
-.vertical-center[
+class: vertical-center
 React is all about components
-]
 
 ???
 no models, no controllers, templates are part of the components, in the future CSS will live there as well.
@@ -179,36 +238,6 @@ Rendering
 früher: jQuery - wieviele elemente der klasse .foo gibt es um zu wissen wieviele fotos im galerieslider sind
 dann backbone - wie update ich nur den namen im DOM wenn ich nur ein event habe, dass der user sich geändert hat?
 
-muss mir als entwickler keine gedanken darum machen.
-
-auch in react: ein model an mehrere views binden spannt viele stricke -> stores in flux / globalere date (Om)
-
-JSX template mit state
-
-präzisere updates
-ich muss mich nicht drum kümmern
-
-
-
-
-React:
-- Rendering und Datenstrukturen sind Implementierungsdetails
-  saubere, flexible Plattform auf die es aufzubauen lohnt
-- geht mehr darum die Ideen zu vermitteln - wenn ihr alle morgen anfangt React zu nutzen bin ich sehr froh, aber wenn ihr immutable.js oder [virtual-dom](https://github.com/Matt-Esch/virtual-dom) in euren Projekten einsetzt bin ich auch froh :)
-
----
----
-
-# React
-
-```javascript
-var = React.createClass({
-
-});
-
-```
-
-???
 Template: so wie in vielen anderen JS Frameworks auch.
 Problem: früher haben wir den DOM als Datenspeicher missbraucht - Datenattribute, Galleriekarussell bei dem wir den DOM mit `$('.galleryImage').length` abfragen wieviele Bilder gerade da sind.
 Dann kam Backbone - Models als "single source of truth".
@@ -221,6 +250,20 @@ einfachste Lösung:
 - ähnlich wie wenn Seiten auf dem Server gerendert werden
 - bisher nicht sehr performant, ABER:
 ... virtueller DOM (nicht Shadow DOM)
+
+muss mir als entwickler keine gedanken darum machen.
+
+auch in react: ein model an mehrere views binden spannt viele stricke -> stores in flux / globalere date (Om)
+
+JSX template mit state
+
+präzisere updates
+ich muss mich nicht drum kümmern
+
+React:
+- Rendering und Datenstrukturen sind Implementierungsdetails
+  saubere, flexible Plattform auf die es aufzubauen lohnt
+- geht mehr darum die Ideen zu vermitteln - wenn ihr alle morgen anfangt React zu nutzen bin ich sehr froh, aber wenn ihr immutable.js oder [virtual-dom](https://github.com/Matt-Esch/virtual-dom) in euren Projekten einsetzt bin ich auch froh :)
 
 ---
 
