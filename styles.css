@@ -14,7 +14,7 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-   font-family: 'Bebas Neue';
+   font-family: 'Bebas Neue', sans-serif;
 } 
 
 ul, ol {
@@ -61,19 +61,19 @@ ul li, ol li {
   top: 0;
   bottom: 0;
   width: 100%;
+  left: 0;
 }
 
 .vertical-center-large {
   font-size: 85px;
 }
 
-.vertical-center a, .vertical-center a:visited {
-  background: #00B36B;
-  color: white;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: bold;
+.vertical-center-medium {
+  font-size: 70px;
+}
+
+.vertical-center-left {
+  justify-content: flex-start;
 }
 
 a, a:visited {
@@ -96,8 +96,8 @@ a, a:visited {
 /* SLIDES */
 
 .title {
-  background-size: 135% auto !important;
-  background-position: 90% 0 !important;
+  background-size: 100% auto !important;
+  background-position: 100% 2% !important;
   color: white;
   box-shadow: inset 0px 0px 120px 40px rgba(0,0,0,0.8);
 }
@@ -138,8 +138,8 @@ a, a:visited {
 
 .where-we-stand {
   color: white;
-  background-size: auto !important;
-  background-position: -350% 0 !important;
+  background-size: 100% auto !important;
+  background-position: center bottom !important;
   background-color: black;
   box-shadow: inset 150px 50px 107px 200px rgba(0,0,0,0.9);
 }
@@ -147,7 +147,7 @@ a, a:visited {
 .what-is-react {
   color: white;
   background-size: 150% auto !important;
-  background-position: 80% 40% !important;
+  background-position: 80% 33% !important;
   box-shadow: inset -100px 0px 110px 160px rgba(0,0,0,0.95);
 }
 
@@ -173,4 +173,81 @@ a, a:visited {
   background-size: auto 80% !important;
   background-position: center !important;
   background-color: #ddd;
+}
+
+.stripe {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  width: 50%;
+  display: block;
+}
+.stripe--red {
+  background: #C82828;
+  left: 0;
+}
+.stripe--green {
+  background: #30C828;
+  left: 0;
+}
+.stripe--blue {
+  background: #284EC8;
+  right: 0;
+}
+
+.railslove-heart {
+  width: 100px;
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.wrapper-center {
+  text-align: center;
+}
+
+.vertical-title {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  font-size: 45px;
+  // font-family: 'Bebas Neue', sans-serif;
+  font-style: italic;
+  color: #999;
+}
+
+.green {
+  color: #30C828;
+}
+
+.blue {
+  color: #284EC8;
+}
+.small {
+  font-size: 40px;
+  display: block;
+}
+
+.large-code code {
+  font-size: 47px;
+}
+
+.background-stretch-vertical {
+  background-size: auto 100% !important;
+}
+
+.mutable-state-is-bad {
+  background-color: black;
+}
+
+.background-black {
+  background-color: black;
+}
+
+.background-blue {
+  background-color: #284EC8;
+  color: white;
+}
+
+.background-blue .vertical-title {
+  color: #ccc;
 }

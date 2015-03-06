@@ -9,30 +9,25 @@ background-image: url(images/tarkovsky3.jpg)
 ]]
 
 ???
-Railslove
-JavaScript, Ruby, Clojure
-
-+ 28./29. Januar in SF
-+ Neugier wecken und neue Ideen vorstellen
-+ Überblick über neuste Entwicklungen, zeigen warum React gerade so Wellen schlägt
++ Entwickler bei **Railslove**
++ **28./29.** Januar in SF
++ erzählen warum React gerade solche **Wellen** schlägt; **Ideen** vorstellen, **Neugier** wecken
++ **kein Tutorial**, kein "React im Vergleich zu Angular/Ember/..."
 
 ---
 
-class: muffin
-background-image: url(images/muffin.png)
+class: background-cover where-we-stand
+background-image: url(images/Ricoh-GR-sample-images-3.jpg)
+
+# Where we stand
 
 ???
-wenn React ein Muffin wäre
-1. Teil: Umriss skizzieren
-
----
-
-class: muffin
-background-image: url(images/muffin-with-bits.png)
-
-???
-2. Teil: ein paar Schokostückchen rauspicken
-+ zunächst zum Umriss
+### Stand von **User Interfaces** mit JavaScript
++ User Interfaces sind schwer: frameworks **sprießen aus dem Boden**
++ HTML wasn't built for web apps
++ ob React bleibt wird die Zeit sagen
++ lange nicht mehr so begeistert von neuen Ideen
++ andere Frameworks bauen gerade fleißig React nach
 
 ---
 
@@ -44,97 +39,371 @@ background-image: url(images/rat_tribe_zhang_hai_hai.jpg)
 ]
 
 ???
+Ok, was is überhaupt React?
+
+---
+
+class: muffin
+background-image: url(images/muffin-with-bits-funky.png)
+
+???
++ **Struktur** meines Vortrags ist: wenn React ein Muffin wäre...
++ **Smartie-Stückchen**: Schätze / Killer Features
++ **Farben** stehen für Konzepte und Ideen, die diese Features möglich machen
+
+(Teig: glue code ;p)
+
+---
+
+class: muffin
+background-image: url(images/muffin.png)
+
+???
++ **Umriss**
+
+---
+
+class: colour-stripes
+
+.stripe.stripe--green[]
+.stripe.stripe--blue[]
+
+???
++ Auffrischerkurs in **Farblehre**
++ **Ideen** hinter React
++ Kern den ich **vermitteln** will
+
+---
+
+class: muffin
+background-image: url(images/muffin-only-green-and-blue.png)
+
+???
++ ein paar Schokostückchen der React Conf rauspicken
+
+# -> zunächst aber zum Umriss
 
 ---
 
 class: vertical-center vertical-center-large
 
-Virtual DOM => good performance
+.vertical-title[
+  outline
+]
 
----
-
-# Themes
-
-+ cohesion - colocate markup and component logic; and CSS, and data requirements.
-
-
-
----
-
-# React ❤ Simplicity
-
-+ makes us _think_ & challenges us
---
-
-+ embraces JavaScript
---
-
-+ easy to reason about
---
-
-+ component architecture
---
-
-+ rendering is an implementation detail
---
-
-+ plays nicely with your stack
-
+JavaScript _library_ for<br> building **user interfaces**
 
 ???
-React ist vielmehr:
-React begeistert mich weil man ihm/ihr anmerkt, dass sie nach Einfachheit strebt und dabei neue Wege aufzeigt wie man UIs bauen kann - hat _alle_ anderen JS Lösungen beeinflusst.
-+ gibt uns zu denken - fordert uns heraus - wir entdecken immer noch erst die Möglichkeiten die uns durch seine Ideen eröffnet werden
-+ nimmt JS begeistert an und nutzt es wo's nur geht
-+ was passiert (Verhalten/Programmfluss) ist leicht nachzuvollziehen / macht was man erwartet
-+ modular, LEGO, nicht verknotet (-> einfach), unidirektionaler Datenfluss: Kindkomponenten erhalten Daten von Eltern aber nicht umgekehrt
-+ virtueller DOM: DOM wird für mich wegabstrahiert
-+ leicht in bestehende Projekte einzubinden, da man nicht die ganze Frontendarchitektur umstellen muss sondern gezielt nur einen Teil mit React bauen kann
++ Mitte 2013, Facebook
++ skeptische Reaktionen - selbst erst durch Om überzeugt.
+
+<br>
++ **Erwartungshaltung**: kein **Framework**
++ the "V" in MVC - kein MVC, aber mehr als nur "V", da andere Ideen
++ **Virtual DOM** -> great performance; und das war's - es geht um mehr.
+
+<br>
++ flexibles Werkzeug, schränkt mich nicht ein wie ein Framework ("A product with the business logic removed, but all of the assumptions left in." (Devil’s Dictionary of Programming))
++ lässt sich leicht in bestehende Lösungen **integrieren**
 
 ---
 
-data -> UI
+class: vertical-center vertical-center-left
 
---
+.vertical-title[outline]
 
++ don't learn a **framework's language**
++ **flexible tool** to model business logic in the language of the problem domain
+
+---
+
+class: vertical-center vertical-center-large
+
+.vertical-title[alien technology]
+
+makes us think and<br>
+**challenges** us
+
+???
++ React ist uns erstmal **fremd** - Alien Technology; JSX, templates und view in gleicher Datei
++ Wir sind immer noch dabei zu entdecken was dank React alles möglich ist.
++ Input und **Erweiterungen** der **Clojure community**.
+# -> nun zur Farblehre
+
+---
+
+class: vertical-center vertical-center-medium vertical-center-left
+
+.vertical-title[ideas]
+
+.green[easy to **reason about**]
+<br>
+<br>
+.blue[don't care about **rendering**]
+
+???
+**zwei zentrale Aspekte** von React anschauen
+**nachvollziehen** was der Code macht
+**jQuery Spaghetti**: alles feuert auf den DOM
+
+---
+
+class: vertical-center vertical-center-medium vertical-center-left
+
+.vertical-title[architectural concepts]
+
+.wrapper[
+.green[
+.small[easy to reason about]
+**separation** of concerns]
+<br>
+.blue[
+.small[don't care about rendering]
+DOM is **abstracted away**]
+]
+
+???
+rendering: rerender everything, virtual DOM as an implementation detail to make this possible
+
+---
+
+class: vertical-center vertical-center-medium vertical-center-left
+
+.vertical-title[implementation]
+
+.wrapper[
+.green[
+.small[easy to reason about > separation of concerns]
+**components**]
+<br>
+.blue[
+.small[don't care about rendering > DOM is abstracted away]
+**Virtual DOM**]
+]
+
+???
+rendering: rerender everything, virtual DOM as an implementation detail to make this possible
+
+---
+
+class: code-fullscreen component-example
+
+```html
+<script src='react.js'></script>
+<script src='JSXTransformer.js'></script>
+
+<div id='example'></div>
+
+<script type='text/jsx'>
+  var ButtonCounter = React.createClass({
+    getInitialState: function() {
+      return { count: 0 };
+    },
+
+    addOne: function() {
+      this.setState({ count: this.state.count + 1 });
+    },
+
+    render: function() {
+      return <div>
+          <div>{ this.state.count }</div>
+          <button onClick={ this.addOne }> +1 </button>
+        </div>
+    }
+  });
+
+React.render(<ButtonCounter />,
+             document.getElementById('example'));
+```
+
+???
++ **Atomare Einheit** einer React-Anwendung
+
+---
+
+class: vertical-center vertical-center-large
+
+.vertical-title[Pete Hunt]
+
+data changing over time is the **root of all evil**
+
+???
++ schwierig nachzuvollziehen - erst recht wenn es mehrere Beteiligte gibt
++ state einer Facebook **Kontaktliste** nach Änderungen
+# -> in React gibt es deshalb...
+
+---
+
+class: vertical-center vertical-center-large
+
+_state_ -vs- _props_
+
+---
+
+class: code-fullscreen component-example
+
+```html
+<script src='react.js'></script>
+<script src='JSXTransformer.js'></script>
+
+<div id='example'></div>
+
+<script type='text/jsx'>
+  var ButtonCounter = React.createClass({
+    getInitialState: function() {
+      return { count: 0 };
+    },
+
+    addOne: function() {
+      this.setState({ count: this.state.count + 1 });
+    },
+
+    render: function() {
+      return <div>
+          <div>{ this.state.count }</div>
+          <button onClick={ this.addOne }> +1 </button>
+        </div>
+    }
+  });
+
+React.render(<ButtonCounter />,
+             document.getElementById('example'));
+```
+
+---
+
+# Props
+
+.large-code[
+```html
+<FriendListItem>
+  <FriendListInfo name="Darth Vader"
+    mutual_friends_count=100 />
+</FriendListItem>
+```
+]
+
+---
+
+class: vertical-center vertical-center-large
+
+_state_ -vs- _props_
+
+???
+### Unterscheidung
++ **state** ist veränderbar, aber wir nur von dieser Komponente verändert
++ **props** sind unveränderbar
++ macht Code viel besser nachvollziehbar wenn ich weiß dass etwas nicht verändert werden kann
+
+---
+
+class: background-stretch-vertical mutable-state-is-bad
+background-image: url(images/davis-mutable-state-is-bad.png)
+
+---
+
+class: vertical-center vertical-center-large
+
+unidirectional data flow
+
+???
+immer von Parent zu Child.
+
+---
+
+class: vertical-center vertical-center-large
+
+.vertical-title[when data needs to travel upstream]
+Flux
+
+???
++ child -> parent (z.b. Toggler) oder inputs
++ kein **Flux** heute, aber dafür ein verwandtes Problem
+
+---
+class: vertical-center vertical-center-large
+
+How do components get the **data** they need?
+
+---
+
+class: vertical-center vertical-center-large
+
+.vertical-title[alien territory ahead]
+
+**GraphQL** and **Relay**
+
+???
++ **GraphQL**: Abfragesprache, die Relay möglich macht, hat nix mit der GraphAPI zu tun
++ **Relay**: Integration dieser Sprache mit React
+
+---
+
+background-image: url(images/components-example.png)
+
+???
+**Composable**: ich kann Components ineinander schachteln
+
+---
+
+background-image: url(images/relay-01.png)
+
+---
+
+background-image: url(images/relay-02.png)
+
+---
+
+background-image: url(images/relay-03.png)
+
+---
+
+background-image: url(images/relay-04.png)
+
+---
+
+background-image: url(images/relay-05.png)
+
+---
+
+background-image: url(images/relay-06.png)
+
+---
+
+class: vertical-center vertical-center-large background-blue
+
+Rendering
+
+---
+
+background-image: url(images/davis-prismatic-example-01-before-cropped.png)
+
+---
+
+background-image: url(images/davis-prismatic-example-02-after-cropped.png)
+
+---
+
+
+class: vertical-center vertical-center-large background-blue
+
+.vertical-title[rendering]
 f: data -> UI
+
+???
++ seitdem wir **jQuery Spaghettiland** hinter uns gelassen haben modellieren wir UI-Logik mit **JS Daten** (DOM nicht mehr als Datenspeicher)
+
+---
+
+class: background-black
+
+background-image: url(images/doom3-react.png)
 
 ---
 
 jQuery: imperatives Spaghettifest mit dem DOM
 Backbone: Templates, aber imperativer Code, der granulare nachträgliche Änderungen vornimmt
 React: deklarativ, render-Funktion beschreibt wie die UI zu allen Zeiten auszusehen hat - was sie dank ständigem Neurendern auch tut.
-
----
-
-class: background-cover where-we-stand
-background-image: url(images/Ricoh-GR-sample-images-3.jpg)
-
-# Where we stand
-
-???
-User Interfaces sind schwer
-JS frameworks sprießen aus dem Boden Blogpost
-
----
-class: vertical-center vertical-center-large
-
-HTML wasn't built for web apps.
-
----
-
-1. jQuery: DOM as data store
-2. Backbone: JavaScript data as single source of truth
-3. Ember, Angular
-4. React
-
-???
-Ember, Angular: easy - focus on programmer convenience, abstractions leak through, have to go at great lengths, not elegant under the hood
-React: simple, abstractions don't leak through, easy to grasp, easy to reason about. elegance and simplicity > programmer convenience.
-not a framework but part of a fexible toolbox
-
-framework — A product with the business logic removed, but all of the assumptions left in.
-[Devil’s Dictionary of Programming](http://programmingisterrible.com/post/65781074112/devils-dictionary-of-programming)
 
 ---
 
@@ -274,12 +543,13 @@ Virtual DOM - doesn't matter where you're actually rendering - can easily be exc
 
 ---
 
-# GraphQL & Relay
+The biggest benefit of React Native isn't JavaScript. It’s React.
+
+[http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about](http://red-badger.com/blog/2015/03/04/react-native-the-killer-feature-that-nobody-talks-about)
 
 ---
 
-# Hotloader
-https://www.youtube.com/watch?v=pw4fKkyPPg8
+# GraphQL & Relay
 
 ---
 
@@ -300,23 +570,6 @@ background-image: url(images/Ricoh-GR-sample-images-3.jpg)
 
 ---
 
-class: what-is-react
-background-image: url(images/rat_tribe_zhang_hai_hai.jpg)
-
-.overlay[
-# 0. What is React?
-]
-
----
-
-.vertical-center[
-<a href="http://localhost:8080/02-1-magic-move" target="_blank">
-  Magic Move
-</a>
-]
-
----
-
 ???
 + JavaScript Bibliothek von Facebook um User Interfaces zu bauen.
 + steckt in: Facebook, Instagram, Atom Editor, Flipboard, Airbnb, Atlassian Hipchat
@@ -326,27 +579,14 @@ background-image: url(images/rat_tribe_zhang_hai_hai.jpg)
 
 ---
 
-.vertical-center[
-  JavaScript _library_ for building UIs
-]
-
----
-
-# Logo Farm
-
-???
-more: https://github.com/facebook/react/wiki/Sites-Using-React
+class: vertical-center
+JavaScript _library_ for building UIs
 
 ---
 
 component with JSX example
 
 render method calls functions, embraces JS and its data structures - doesn't need models ("React quickly became known as the 'V' in MVC and people kept asking what do I use for the 'M' then? The answer is you don't need an 'M', you have JavaScript arrays and objects already.")
-
----
-
-props and state
-shared mutable state is the root of all evil
 
 ---
 
@@ -365,10 +605,43 @@ Einfachheit:
 
 ---
 
-background-image: url(images/sunshine.jpg)
+class: vertical-center
+
+React Native
 
 ???
-:)
+native apps with React
+
+---
+
+# More treasures
+
++ David Nolen, Cognitect: ["React Refracted"](https://www.youtube.com/watch?v=5hGHdETNteE)
++ Lee Byron, Facebook: ["Immutable Data and React"](https://www.youtube.com/watch?v=I7IdS-PbEgI)
+
+???
+Dome of the cathedral of Florence
+
+---
+
+class: vertical-center vertical-center-large
+
+.wrapper-center[
+Summary
+<br>
+.railslove-heart[![heart](images/railslove-heart.svg)]
+]
+
+---
+
+class: vertical-center
+
+.wrapper[
+# React Europe
+2-3 July, Paris
+
+[react-europe.org](http://www.react-europe.org)
+]
 
 ---
 
@@ -380,45 +653,11 @@ Questions
 
 # Links
 + [React.js Conf 2015 Videos](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
++ [The Future of JavaScript MVC Frameworks](https://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs)
 + [Removing User Interface Complexity, or Why React is Awesome](http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome)
 + [React’s diff algorithm](http://calendar.perfplanet.com/2013/diff)
 + [Coming to React from Angular](http://www.stridenyc.com/blog/2015/3/4/coming-to-react-from-angular)
++ [Hotloader](https://www.youtube.com/watch?v=pw4fKkyPPg8)
 
----
-
-class: code-fullscreen component-example
-
-### JSX
-
-```javascript
-render: function() {
-  return <div>
-    <div>{ this.state.count }</div>
-    <button onClick={ this.addOne }> +1 </button>
-  </div>
-}
-```
-
-<hr>
-
-### Becomes
-
-```javascript
-render: function() {
-  return React.DOM.div(null,
-    React.DOM.div(null, this.state.count),
-    React.DOM.button({ onClick: this.addOne }, '+1')
-  );
-}
-```
-
-???
-JSX is a very thin layer on top of JavaScript.
-
----
-class: no-vertical-padding
-.contain-images[
-![](images/alman-rethink-best-practices.png)
-![](images/alman-today.png)
-]
-https://twitter.com/cowboy/status/339858717451362304
++ [React & Om](https://paulwittmann.github.io/cgnjs-om)
++ [My Way into Clojure: Building a Card Game with Om](http://www.railslove.com/stories/my-way-into-clojure-building-a-card-game-with-om-part-1)

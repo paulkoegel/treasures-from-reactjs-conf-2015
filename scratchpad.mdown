@@ -1,0 +1,37 @@
+Better performance through simplicity
+"making an entire family of common and tedious hand optimization techniques obsolete"
+David Nolen. "The Future of JavaScript MVC Frameworks"
+
+Benefits:
++ server-side rendering
+
+
+cohesion - colocate markup and component logic; and CSS, and data requirements.
+
+
+---
+
+React ist vielmehr:
+React begeistert mich weil man ihm/ihr anmerkt, dass sie nach Einfachheit strebt und dabei neue Wege aufzeigt wie man UIs bauen kann - hat _alle_ anderen JS Lösungen beeinflusst.
++ gibt uns zu denken - fordert uns heraus - wir entdecken immer noch erst die Möglichkeiten die uns durch seine Ideen eröffnet werden
++ nimmt JS begeistert an und nutzt es wo's nur geht
++ was passiert (Verhalten/Programmfluss) ist leicht nachzuvollziehen / macht was man erwartet
++ modular, LEGO, nicht verknotet (-> einfach), unidirektionaler Datenfluss: Kindkomponenten erhalten Daten von Eltern aber nicht umgekehrt
++ virtueller DOM: DOM wird für mich wegabstrahiert
++ leicht in bestehende Projekte einzubinden, da man nicht die ganze Frontendarchitektur umstellen muss sondern gezielt nur einen Teil mit React bauen kann
+
+
+1. jQuery: DOM as data store
+2. Backbone: JavaScript data as single source of truth
+3. Ember, Angular
+4. React
+
+???
+Ember, Angular: easy - focus on programmer convenience, abstractions leak through, have to go at great lengths, not elegant under the hood
+React: simple, abstractions don't leak through, easy to grasp, easy to reason about. elegance and simplicity > programmer convenience.
+not a framework but part of a fexible toolbox
+
+framework — A product with the business logic removed, but all of the assumptions left in.
+[Devil’s Dictionary of Programming](http://programmingisterrible.com/post/65781074112/devils-dictionary-of-programming)
+
+
